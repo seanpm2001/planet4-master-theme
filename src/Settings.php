@@ -139,7 +139,7 @@ class Settings
                         'attributes' => [
                             'type' => 'text',
                         ],
-                        'desc' => __('Add default button text which appears on <b>Take Action</b> card of <b>Take Action Covers</b> block. <br>Also it would be used for Take Action Cards inside Posts and Take Action Cards in search results', 'planet4-master-theme-backend'),
+                        'desc' => __('Add default button text which appears on <b>Take Action</b> card of <b>Take Action Covers</b> block. <br>Also it would be used for Take Action Cards inside Posts and Take Action Cards in search results', 'planet4-master-theme-backend'), // phpcs:ignore
                     ],
 
                     [
@@ -150,7 +150,10 @@ class Settings
                             'type' => 'number',
                         ],
                         'default' => Post\ReadingTimeCalculator::DEFAULT_WPM,
-                        'desc' => __('Average reading words per minute (usually between 220 and 320).', 'planet4-master-theme-backend'),
+                        'desc' => __(
+                            'Average reading words per minute (usually between 220 and 320).',
+                            'planet4-master-theme-backend'
+                        ),
                     ],
 
                     // HappyPoint settings.
@@ -162,7 +165,10 @@ class Settings
                             'url' => false,
                         ],
                         'text' => [
-                            'add_upload_file_text' => __('Add Default Happy Point Background Image', 'planet4-master-theme-backend'),
+                            'add_upload_file_text' => __(
+                                'Add Default Happy Point Background Image',
+                                'planet4-master-theme-backend'
+                            ),
                         ],
                         'query_args' => [
                             'type' => 'image',
@@ -218,19 +224,25 @@ class Settings
                     ],
                     [
                         'name' => __('Search content decay', 'planet4-master-theme-backend'),
-                        'desc' => __('Amount of lowering of the relevancy score for older results. Between 0 and 1. The lower this number is, the lower older content will be ranked. See image. <br>We use the exponential function (exp, green curve).<br/> <img style="max-width:350px" alt="ElasticSearch decay function graph" src="https://www.elastic.co/guide/en/elasticsearch/reference/current/images/decay_2d.png">', 'planet4-master-theme-backend'),
+                        'desc' => __('Amount of lowering of the relevancy score for older results. Between 0 and 1. The lower this number is, the lower older content will be ranked. See image. <br>We use the exponential function (exp, green curve).<br/> <img style="max-width:350px" alt="ElasticSearch decay function graph" src="https://www.elastic.co/guide/en/elasticsearch/reference/current/images/decay_2d.png">', 'planet4-master-theme-backend'), // phpcs:ignore
                         'id' => 'epwr_decay',
                         'type' => 'text',
                     ],
                     [
                         'name' => __('Search content decay scale', 'planet4-master-theme-backend'),
-                        'desc' => __('Timescale for lowering the relevance of older results. See image above.', 'planet4-master-theme-backend'),
+                        'desc' => __(
+                            'Timescale for lowering the relevance of older results. See image above.',
+                            'planet4-master-theme-backend'
+                        ),
                         'id' => 'epwr_scale',
                         'type' => 'text',
                     ],
                     [
                         'name' => __('Search content decay offset', 'planet4-master-theme-backend'),
-                        'desc' => __('How old should a post be before relevance is lowered. See image above.', 'planet4-master-theme-backend'),
+                        'desc' => __(
+                            'How old should a post be before relevance is lowered. See image above.',
+                            'planet4-master-theme-backend'
+                        ),
                         'id' => 'epwr_offset',
                         'type' => 'text',
                     ],
@@ -303,9 +315,9 @@ class Settings
                     [
                         'name' => __('Enforce Cookies Policy', 'planet4-master-theme-backend'),
                         'desc' => __(
-                            'GDPR related setting. By enabling this option specific content will be blocked and will require user consent to be shown.<br>
-							<b>WARNING:</b> If the setting is checked this will prevent Google Tag Manager container from being fired unless the user has accepted the cookies policy (giving consent in the cookies bar).<br>
-							This might affect the data collected with Google Analytics. For more information please see the documentation in the  <a href="https://planet4.greenpeace.org/handbook/block-cookies/">Planet 4 Handbook</a>.',
+                            'GDPR related setting. By enabling this option specific content will be blocked and will require user consent to be shown.<br>' // phpcs:ignore
+							. '<b>WARNING:</b> If the setting is checked this will prevent Google Tag Manager container from being fired unless the user has accepted the cookies policy (giving consent in the cookies bar).<br>' // phpcs:ignore
+							. 'This might affect the data collected with Google Analytics. For more information please see the documentation in the  <a href="https://planet4.greenpeace.org/handbook/block-cookies/">Planet 4 Handbook</a>.', // phpcs:ignore
                             'planet4-master-theme-backend'
                         ),
                         'id' => 'enforce_cookies_policy',
@@ -314,7 +326,10 @@ class Settings
 
                     [
                         'name' => __('Enable Analytical Cookies', 'planet4-master-theme-backend'),
-                        'desc' => __('Enable the Analytical cookies option in Cookies block and box', 'planet4-master-theme-backend'),
+                        'desc' => __(
+                            'Enable the Analytical cookies option in Cookies block and box',
+                            'planet4-master-theme-backend'
+                        ),
                         'id' => 'enable_analytical_cookies',
                         'type' => 'checkbox',
                     ],
@@ -363,11 +378,11 @@ class Settings
                         'name' => __('Facebook App Access Token', 'planet4-master-theme-backend'),
                         'id' => 'fb_app_access_token',
                         'type' => 'text',
-                        'desc' => __('FB App Access Token is used to fetch FB & IG oembed in Social Media block.', 'planet4-master-theme-backend') . '<a href="">' . __('Read more', 'planet4-master-theme-backend') . '</a><Br>' . __('Alternatively you could also add FB App ID and App Secret in place of App Access Token.', 'planet4-master-theme-backend') . '<BR>eg. {your-app_id}|{your-app_secret}',
+                        'desc' => __('FB App Access Token is used to fetch FB & IG oembed in Social Media block.', 'planet4-master-theme-backend') . '<a href="">' . __('Read more', 'planet4-master-theme-backend') . '</a><Br>' . __('Alternatively you could also add FB App ID and App Secret in place of App Access Token.', 'planet4-master-theme-backend') . '<BR>eg. {your-app_id}|{your-app_secret}', // phpcs:ignore
                     ],
                     [
                         'name' => __('Preconnect Domains', 'planet4-master-theme-backend'),
-                        'desc' => __('Add a list of third-party URLs to "preconnect" (e.g.: https://in.hotjar.com). Look for "preconnect" in the P4 Handbook for details.', 'planet4-master-theme-backend'),
+                        'desc' => __('Add a list of third-party URLs to "preconnect" (e.g.: https://in.hotjar.com). Look for "preconnect" in the P4 Handbook for details.', 'planet4-master-theme-backend'), // phpcs:ignore
                         'id' => 'preconnect_domains',
                         'type' => 'textarea',
                         'attributes' => [
@@ -387,7 +402,10 @@ class Settings
                             'url' => false,
                         ],
                         'text' => [
-                            'add_upload_file_text' => __('Add 404 Page Background Image', 'planet4-master-theme-backend'),
+                            'add_upload_file_text' => __(
+                                'Add 404 Page Background Image',
+                                'planet4-master-theme-backend'
+                            ),
                         ],
                         'query_args' => [
                             'type' => 'image',
@@ -432,7 +450,7 @@ class Settings
                     [
                         'name' => __('AB Hide Selector', 'planet4-master-theme-backend'),
                         'desc' => __(
-                            'When running an AB test it is possible that the original is shown for a short while (called flicker). If this happens you can enter a CSS selector here and matching elements will be hidden until the test is fully loaded.',
+                            'When running an AB test it is possible that the original is shown for a short while (called flicker). If this happens you can enter a CSS selector here and matching elements will be hidden until the test is fully loaded.', // phpcs:ignore
                             'planet4-master-theme-backend'
                         ),
                         'id' => 'ab_hide_selector',
@@ -440,13 +458,16 @@ class Settings
                     ],
                     [
                         'name' => __('Local Projects Google Sheet ID', 'planet4-master-theme-backend'),
-                        'desc' => __('The Google Sheet that is used to get analytics values from local(NRO) spreadsheet.', 'planet4-master-theme-backend'),
+                        'desc' => __(
+                            'The Google Sheet that is used to get analytics values from local(NRO) spreadsheet.',
+                            'planet4-master-theme-backend'
+                        ),
                         'id' => 'analytics_local_google_sheet_id',
                         'type' => 'text',
                     ],
                     [
                         'name' => __('Enable Google Consent Mode', 'planet4-master-theme-backend'),
-                        'desc' => __("Enabling the Consent Mode will affect your setup in Google Tag Manager. The Consent Mode will prevent tags with built-in consent checks (eg. Google Analytics) from running before the user's consent is granted.", 'planet4-master-theme-backend'),
+                        'desc' => __("Enabling the Consent Mode will affect your setup in Google Tag Manager. The Consent Mode will prevent tags with built-in consent checks (eg. Google Analytics) from running before the user's consent is granted.", 'planet4-master-theme-backend'), // phpcs:ignore
                         'id' => 'enable_google_consent_mode',
                         'type' => 'checkbox',
                     ],
@@ -509,8 +530,14 @@ class Settings
      */
     public function add_options_pages(): void
     {
-        $this->options_page = add_menu_page($this->title, $this->title, 'manage_options', $this->slug, function (): void {
-        }, 'dashicons-admin-site-alt');
+        $this->options_page = add_menu_page(
+            $this->title,
+            $this->title,
+            'manage_options',
+            $this->slug,
+            null,
+            'dashicons-admin-site-alt'
+        );
         foreach ($this->subpages as $path => $subpage) {
             add_submenu_page(
                 $this->slug,
@@ -518,9 +545,7 @@ class Settings
                 $subpage['title'],
                 'manage_options',
                 $path,
-                function () use ($path): void {
-                    $this->admin_page_display($path);
-                }
+                fn() => $this->admin_page_display($path)
             );
         }
     }
@@ -534,7 +559,12 @@ class Settings
     public function add_notifications(): void
     {
         if (! count(get_settings_errors())) {
-            add_settings_error('general', 'settings_updated', __('Settings saved.', 'planet4-master-theme-backend'), 'success');
+            add_settings_error(
+                'general',
+                'settings_updated',
+                __('Settings saved.', 'planet4-master-theme-backend'),
+                'success'
+            );
         }
 
         settings_errors();
@@ -681,6 +711,7 @@ class Settings
     /**
      * Show notice to inform users that the Donate button settings are now in Appearance > Menus.
      *
+     * phpcs:disable Generic.Files.LineLength.MaxExceeded
      */
     private function show_donate_menu_notice(): string
     {
@@ -689,6 +720,7 @@ class Settings
 			There you can add a custom link with your text and link for the Donate button,
 			and you will also be able to define dropdown menu items if you want to.</p>';
     }
+    // phpcs:enable Generic.Files.LineLength.MaxExceeded
 
     /**
      * Defines the theme option metabox and field configuration.
@@ -715,7 +747,8 @@ class Settings
 
     /**
      * Hook for wpml plugin.
-     * Enables the possibility to save a different value per language for the theme options using WPML language switcher.
+     * Enables the possibility to save a different value per language
+     * for the theme options using WPML language switcher.
      */
     public function make_settings_multilingual(): void
     {
