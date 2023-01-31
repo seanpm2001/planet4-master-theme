@@ -8,14 +8,8 @@
   <arg name="tab-width" value="4"/>
   <config name="encoding" value="utf-8"/>
 
-  <!-- @todo: Temporary exclusions for 1st PR on 6967 -->
-  <rule ref="PSR12">
-    <exclude name="PSR1.Methods.CamelCapsMethodName"/>
-  </rule>
-  <rule ref="Squiz.NamingConventions">
-    <exclude name="Squiz.NamingConventions.ValidFunctionName"/>
-    <exclude name="Squiz.NamingConventions.ValidVariableName"/>
-  </rule>
+  <rule ref="PSR12"/>
+  <rule ref="Squiz.NamingConventions"/>
 
   <!-- Deprecated WP features -->
   <config name="minimum_supported_wp_version" value="6.1"/>
