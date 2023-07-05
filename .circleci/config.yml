@@ -31,7 +31,7 @@ job-references:
             vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs,vendor/slevomat/coding-standard
             vendor/bin/phpcs -i
             vendor/bin/phpcs -d error_reporting="E_ALL&~E_DEPRECATED" \
-              --report=junit --report-file=/tmp/test-results/phpcs/$CIRCLE_STAGE.xml \
+              --report=junit --report-file=/tmp/test-results/phpcs/report.xml \
               src/ page-templates/ tests/ *.php
       - run:
           name: phpunit
@@ -42,7 +42,7 @@ job-references:
             base=$(curl -s https://raw.githubusercontent.com/greenpeace/planet4-base/main/composer.json)
             WP_VERSION=$(jq -r '.extra["wp-version"] // empty' \<<< "${base}")
             bash bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 $WP_VERSION
-            vendor/bin/phpunit --log-junit /tmp/test-results/phpunit/$CIRCLE_STAGE.xml
+            vendor/bin/phpunit --log-junit /tmp/test-results/phpunit/report.xml
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
