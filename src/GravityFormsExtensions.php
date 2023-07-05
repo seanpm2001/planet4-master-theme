@@ -325,8 +325,18 @@ class GravityFormsExtensions
     public function p4_gf_custom_confirmation($confirmation, $form, $entry)
     {
         // If the $confirmation object is an array, it means that it's a redirect page so we can directly use it.
+        GFCommon::log_debug(__METHOD__ . '(): Confirmation - ' . print_r($confirmation, true));
         if (is_array($confirmation)) {
             return $confirmation;
+        }
+
+        $confirmations = $form['confirmations'] ?? [];
+        $redirections = array_filter(
+            $confirmations,
+            fn($c) => ($c['isDefault'] ?? null === true) && $c['type'] === 'redirect' && !empty($c['url'])
+        );
+        if (!empty($redirections)) {
+            return ['redirect' => $redirections[0]['url']];
         }
 
         $context = Timber::get_context();
@@ -658,6 +668,7 @@ class GravityFormsExtensions
     public function p4_gf_custom_confirmation_redirect($confirmation, $form)
     {
         GFCommon::log_debug(__METHOD__ . '(): running.');
+        GFCommon::log_debug(__METHOD__ . '(): Confirmation - ' . print_r($confirmation, true));
         if (isset($confirmation['redirect'])) {
             $url = esc_url_raw($confirmation['redirect']);
             GFCommon::log_debug(__METHOD__ . '(): Redirect to URL: ' . $url);
