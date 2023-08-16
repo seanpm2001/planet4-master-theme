@@ -33,8 +33,8 @@ use P4\MasterTheme\Features\RedirectRedirectPages;
 use P4\MasterTheme\Post;
 use Timber\Timber;
 
-$context = Timber::get_context();
-$post = new Post(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+$context = Timber::context();
+$post = Timber::get_post(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 $page_meta_data = get_post_meta($post->ID) ?: [];
 $page_meta_data = array_map(fn($v) => reset($v), $page_meta_data);
 

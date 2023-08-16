@@ -14,7 +14,7 @@ use P4\MasterTheme\Post;
 use Timber\Timber;
 
 // Initializing variables.
-$context = Timber::get_context();
+$context = Timber::context();
 /**
  * P4 Post Object
  *

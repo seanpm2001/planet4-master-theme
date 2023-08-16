@@ -340,6 +340,8 @@ class ActionPage
         // Get planet4 action type taxonomy terms.
         $term_slugs = $this->get_terms_slugs();
 
+        do_action('qm/debug', $term_slugs);
+
         if ($term_slugs) {
             $terms_slugs_regex = implode('|', $term_slugs);
 

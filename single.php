@@ -16,13 +16,13 @@ use P4\MasterTheme\Settings\CommentsGdpr;
 use Timber\Timber;
 
 // Initializing variables.
-$context = Timber::get_context();
+$context = Timber::context();
 /**
  * P4 Post Object
  *
  * @var Post $post
  */
-$post = Timber::query_post(false, Post::class); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+$post = Timber::get_post(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 $context['post'] = $post;
 
 // Set Navigation Issues links.

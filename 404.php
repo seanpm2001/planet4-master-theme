@@ -10,7 +10,7 @@
  * @since    Timber 0.1
  */
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 $options = get_option('planet4_options');
 $context['page_notfound_image'] = $options['404_page_bg_image']

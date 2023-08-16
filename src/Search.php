@@ -275,7 +275,7 @@ abstract class Search
         $this->search_query = $search_query;
         $this->templates = [ 'search.twig', 'archive.twig', 'index.twig' ];
 
-        $this->context = Timber::get_context();
+        $this->context = Timber::context();
         if (empty($selected_sort)) {
             $selected_sort = self::DEFAULT_SORT;
         }

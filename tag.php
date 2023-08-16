@@ -38,11 +38,8 @@ if ($redirect_id) {
     exit();
 }
 
-$post = Timber::query_post(false, Post::class); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-$context = Timber::get_context();
-if ($post instanceof \WP_Post) {
-    $post = new Post($post->ID);
-}
+$post = Timber::get_post(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+$context = Timber::context();
 
 Context::set_og_meta_fields($context, $post);
 $context['tag'] = $tag;

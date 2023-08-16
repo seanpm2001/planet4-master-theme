@@ -23,7 +23,7 @@ class User extends Timber\User
      * @param object|int|bool $uid The User id.
      * @param string          $author_override The author override display name.
      */
-    public function __construct($uid = false, string $author_override = '')
+/*    public function __construct($uid = false, string $author_override = '')
     {
         if (! $author_override) {
             parent::__construct($uid);
@@ -31,6 +31,15 @@ class User extends Timber\User
             $this->display_name = $author_override;
             $this->is_fake = true;
         }
+    }*/
+
+    public static function build(\WP_User $wp_user): self
+    {
+        $user = parent::build($wp_user);
+
+
+
+        return $user;
     }
 
     /**

@@ -18,7 +18,7 @@ use Timber\Timber;
 
 $templates = [ 'taxonomy.twig', 'index.twig' ];
 
-$context = Timber::get_context();
+$context = Timber::context();
 $context['taxonomy'] = get_queried_object();
 $context['wp_title'] = $context['taxonomy']->name;
 $context['canonical_link'] = home_url($wp->request);

@@ -36,7 +36,8 @@
     }
   },
   "require": {
-    "google/apiclient": "^2.12"
+    "google/apiclient": "^2.12",
+    "timber/timber": "2.0.0-rc.1"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.7",

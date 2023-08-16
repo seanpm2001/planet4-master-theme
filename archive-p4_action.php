@@ -15,7 +15,7 @@ use Timber\Timber;
 
 $templates = [ 'all-actions.twig', 'archive.twig', 'index.twig' ];
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 $context['custom_body_classes'] = 'tax-p4-page-type';
 $context['header_title'] = post_type_archive_title('', false);

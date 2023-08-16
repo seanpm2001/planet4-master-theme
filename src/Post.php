@@ -2,6 +2,7 @@
 
 namespace P4\MasterTheme;
 
+use Timber\Timber;
 use Timber\Post as TimberPost;
 use WP_Block;
 use WP_Error;
@@ -17,45 +18,42 @@ class Post extends TimberPost
      *
      * @var array|null $issues_nav_data
      */
-    protected ?array $issues_nav_data = null;
+    public ?array $issues_nav_data = null;
 
     /**
      * Content type
      *
      */
-    protected string $content_type;
+    public string $content_type;
 
     /**
      * Page types
      *
      * @var TimberTerm[] $page_types
      */
-    protected array $page_types = [];
+    public array $page_types = [];
 
     /**
      * Author
      *
      */
-    protected User $author;
+    public User $author;
 
     /**
      * Associative array with the values to be passed to GTM Data Layer.
      *
      * @var array $datalayer
      */
-    protected array $data_layer;
+    public array $data_layer;
 
-    /**
-     * Post constructor.
-     *
-     * @param mixed $pid The post id.
-     * If left null it will try to figure out the current post id based on being inside The_Loop.
-     */
-    public function __construct($pid = null)
-    {
-        parent::__construct($pid);
-        $this->set_page_types();
-        $this->set_author();
+    public static function build(
+        \WP_Post $wp_post
+    ): self {
+        $post = parent::build($wp_post);
+        $post->set_page_types();
+        $post->set_author();
+
+        return $post;
     }
 
     /**
@@ -443,9 +441,9 @@ class Post extends TimberPost
     {
         $author_override = get_post_meta($this->id, 'p4_author_override', true);
         if ('' !== $author_override) {
-            $this->author = new User(false, $author_override); // Create fake User.
+            $this->author = Timber::get_user(false, $author_override); // Create fake User.
         } else {
-            $this->author = new User((int) $this->post_author);
+            $this->author = Timber::get_user((int) $this->post_author);
         }
     }
 
@@ -501,7 +499,7 @@ class Post extends TimberPost
         $is_valid = true;
 
         // Check if page url has a unique id(custom hash), appended with it, if not add one.
-        $custom_hash = filter_input(INPUT_GET, 'ch', FILTER_SANITIZE_STRING);
+        $custom_hash = sanitize_text_field($_GET['ch']);
         if (!$custom_hash) {
             wp_safe_redirect(add_query_arg('ch', password_hash(uniqid('', true), PASSWORD_DEFAULT), get_permalink()));
             exit();

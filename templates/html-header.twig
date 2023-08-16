@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html {{ fn('language_attributes', 'html') }} data-base="{{ data_nav_bar.home_url }}">
 <head>
+
     {% include 'blocks/google_antiflicker.twig' %}
     {% include 'blocks/google_tag_manager.twig' %}
 
@@ -33,7 +34,7 @@
         <link rel="canonical" href="{{ canonical_link }}">
     {% endif %}
 
-    {{ wp_head }}
+    {{ function('wp_head') }}
 
     {% if preconnect_domains %}
         {% for domain in preconnect_domains %}

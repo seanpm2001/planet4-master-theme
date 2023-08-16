@@ -16,7 +16,7 @@ use P4\MasterTheme\Post;
 use Timber\Timber;
 use Timber\PostQuery;
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 $post_args = [
     'posts_per_page' => 10,

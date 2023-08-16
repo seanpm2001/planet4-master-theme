@@ -84,7 +84,7 @@ use P4\MasterTheme\Loader;
 use P4\MasterTheme\Post;
 use Timber\Timber;
 
-if (! class_exists('Timber')) {
+if (! class_exists('Timber\Timber')) {
     add_action(
         'admin_notices',
         function (): void {
@@ -102,13 +102,8 @@ if (! class_exists('Timber')) {
 
     return;
 }
+Timber::init();
 
-// Enable Timber template cache unless this is a debug environment.
-if (defined('WP_DEBUG') && is_bool(WP_DEBUG)) {
-    Timber::$cache = ! WP_DEBUG;
-} else {
-    Timber::$cache = true;
-}
 
 add_action(
     'rest_api_init',

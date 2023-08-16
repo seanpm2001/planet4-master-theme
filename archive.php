@@ -19,7 +19,7 @@ use Timber\Timber;
 
 $templates = [ 'archive.twig', 'index.twig' ];
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 $context['title'] = 'Archive';
 if (is_day()) {
