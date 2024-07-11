@@ -76,7 +76,12 @@ const renderEdit = (attributes, setAttributes, isSelected) => {
         <InspectorControls>
           <PanelBody title={__('Settings', 'planet4-blocks-backend')}>
             <div className="wp-block-master-theme-gallery__FocalPointPicker">
-              <p>{__('Select gallery image focal point', 'planet4-blocks-backend')}</p>
+              <strong className="components-base-control__help">
+                {__('Select image focal point', 'planet4-blocks-backend')}
+              </strong>
+              <p className="components-base-control__help">
+                {__('Drag the mouse to the focal area or input the position with numbers for more precision.', 'planet4-blocks-backend')}
+              </p>
               <ul>
                 {focalPointImages.map((item, index) => (
                   <li key={index}>
@@ -90,6 +95,9 @@ const renderEdit = (attributes, setAttributes, isSelected) => {
                   </li>
                 ))}
               </ul>
+              <p className="components-base-control__help">
+                {__('Drag “left” to move across the horizontal axis and slide “top” upwards to move through the vertical axis.', 'planet4-blocks-backend')}
+              </p>
             </div>
           </PanelBody>
         </InspectorControls>
