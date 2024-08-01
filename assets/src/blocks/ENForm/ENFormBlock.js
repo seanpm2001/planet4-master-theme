@@ -1,4 +1,3 @@
-import {renderToString} from 'react-dom/server';
 import {ENFormEditor} from './ENFormEditor';
 import {ENFormFrontend} from './ENFormFrontend';
 import {ENFormV1} from './deprecated/ENFormV1.js';
@@ -10,7 +9,7 @@ export const BLOCK_NAME = 'planet4-blocks/enform';
 
 export const registerENForm = () => {
   const {registerBlockType} = wp.blocks;
-  const {RawHTML} = wp.element;
+  const {RawHTML, renderToString} = wp.element;
 
   registerBlockType(BLOCK_NAME, {
     title: 'EN Form',
